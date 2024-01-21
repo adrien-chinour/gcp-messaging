@@ -1,0 +1,17 @@
+POST {{host}}/webhook/order_validated_email
+Content-Type: application/json
+Accept: application/json
+
+{
+    "message": {
+        "attributes": {
+            "message": "order_transaction:succeed"
+        },
+        "data": "eyJjb25maXJtYXRpb25Db2RlIjoidGVzdCIsImlkIjoiNTU3ODE3NmItNmJjYi00ZDViLThlM2YtYTI2YzI2YjJiM2MzIn0=",
+        "messageId": "2070443601311540",
+        "message_id": "2070443601311540",
+        "publishTime": "2021-02-26T19:13:55.749Z",
+        "publish_time": "2021-02-26T19:13:55.749Z"
+    },
+   "subscription": "fake"
+}

@@ -1,0 +1,32 @@
+services:
+  order_api:
+    container_name: order-api
+    ports:
+      # HTTP
+      - target: 80
+        published: ${HTTP_PORT:-80}
+        protocol: tcp
+      # HTTPS
+      - target: 443
+        published: ${HTTPS_PORT:-443}
+        protocol: tcp
+      # HTTP/3
+      - target: 443
+        published: ${HTTP3_PORT:-443}
+        protocol: udp
+    build:
+      context: ./api
+      target: api_dev
+    volumes:
+      - ./api:/app
+      - ./api/docker/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./api/docker/conf.d/app.dev.ini:/usr/local/etc/php/conf.d/app.dev.ini:ro
+    environment:
+      SERVER_NAME: ${SERVER_NAME:-localhost}, php:80
+      XDEBUG_MODE: ${XDEBUG_MODE:-off}
+      # Activate Worker Mode
+      # FRANKENPHP_CONFIG: "worker ./public/index.php"
+      # APP_RUNTIME: "Runtime\\FrankenPhpSymfony\\Runtime"
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    tty: true

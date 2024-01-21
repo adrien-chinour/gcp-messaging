@@ -1,0 +1,6 @@
+POST {{host}}/order_validation
+Content-Type: application/json
+
+{
+    "confirmationCode": "test"
+}

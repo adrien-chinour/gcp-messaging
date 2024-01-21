@@ -1,0 +1,10 @@
+controllers:
+  resource: '../src/Controller'
+  type: attribute
+
+webhooks:
+  resource: '../src/Webhook'
+  type: attribute
+  prefix: '/webhook'
+  name_prefix: 'webhook_'
+  condition: ''
